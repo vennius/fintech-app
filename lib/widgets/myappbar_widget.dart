@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:badges/badges.dart' as badges;
@@ -52,9 +53,14 @@ class MyAppBar extends StatelessWidget {
             ],
           ),
           badges.Badge(
-            position: badges.BadgePosition.custom(end: 0, top: 2),
+            position: badges.BadgePosition.custom(end: 2, top: 4),
             badgeStyle: badges.BadgeStyle(badgeColor: Color(0xFFE25C5C)),
-            child: Icon(Icons.notifications_outlined),
+            child: IconButton(
+              icon: Icon(Icons.notifications_outlined),
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+              },
+            ),
           ),
         ],
       ),

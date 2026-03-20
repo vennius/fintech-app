@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "714050791300",
+    "firebase_url": "https://labs-22a6a-default-rtdb.firebaseio.com",
+    "project_id": "labs-22a6a",
+    "storage_bucket": "labs-22a6a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714050791300:android:49ad6babf07c96f22f5fd1",
+        "android_client_info": {
+          "package_name": "com.example.fintech_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "714050791300-mm22u0teuk7ulq38ri1ppp35m9qlnno8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKUDqL0VLtwGLu3QoZQmb6fa6ns_5XMd0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "714050791300-mm22u0teuk7ulq38ri1ppp35m9qlnno8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "714050791300-0s6bf9jmi7vb8rgapntbr7mkkigtd2m7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.learnFlutter"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714050791300:android:0c7055a5d8af83102f5fd1",
+        "android_client_info": {
+          "package_name": "com.stevennius.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "714050791300-mm22u0teuk7ulq38ri1ppp35m9qlnno8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKUDqL0VLtwGLu3QoZQmb6fa6ns_5XMd0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "714050791300-mm22u0teuk7ulq38ri1ppp35m9qlnno8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "714050791300-0s6bf9jmi7vb8rgapntbr7mkkigtd2m7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.learnFlutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
