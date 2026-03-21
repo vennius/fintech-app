@@ -17,8 +17,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _controllerEmail = TextEditingController();
-    final TextEditingController _controllerPassword = TextEditingController();
+    final TextEditingController controllerEmail = TextEditingController();
+    final TextEditingController controllerPassword = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -34,10 +34,10 @@ class _RegisterPageState extends State<RegisterPage> {
           spacing: 20,
           mainAxisAlignment: .center,
           children: [
-            AuthField(label: "Email", controller: _controllerEmail),
+            AuthField(label: "Email", controller: controllerEmail),
             AuthField(
               label: "Password",
-              controller: _controllerPassword,
+              controller: controllerPassword,
               isPassword: true,
             ),
             AuthButton(
@@ -48,8 +48,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   _isLoading = true;
                 });
                 await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                  email: _controllerEmail.value.text,
-                  password: _controllerPassword.value.text,
+                  email: controllerEmail.value.text,
+                  password: controllerPassword.value.text,
                 );
                 setState(() {
                   _isLoading = false;
