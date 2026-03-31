@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WalletAppbar extends StatelessWidget {
@@ -12,7 +13,10 @@ class WalletAppbar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.chevron_left)),
+          IconButton(
+            onPressed: () => Get.back(),
+            icon: Icon(Icons.chevron_left),
+          ),
           Text(
             "Wallet",
             style: GoogleFonts.plusJakartaSans(

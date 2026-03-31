@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class WalletCard extends StatelessWidget {
-  const WalletCard({super.key, required this.bgColor});
+  const WalletCard({super.key, required this.balance});
 
-  final Color bgColor;
+  final int balance;
 
   @override
   Widget build(BuildContext context) {
+    final formatCurrency = NumberFormat.simpleCurrency();
     return Container(
       width: 271,
       height: 170,
@@ -48,7 +50,7 @@ class WalletCard extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "\$10,000.00",
+                          formatCurrency.format(balance),
                           style: GoogleFonts.inter(
                             fontSize: 20,
                             fontWeight: .w700,

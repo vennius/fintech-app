@@ -1,5 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fintech_app/controllers/user_controller.dart';
+import 'package:fintech_app/services/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:badges/badges.dart' as badges;
 
@@ -17,6 +19,8 @@ class MyAppBar extends StatelessWidget {
         : hour < 20
         ? "Evening"
         : "Night";
+
+    final UserController c = Get.find();
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 24.5, vertical: 9),
@@ -41,11 +45,13 @@ class MyAppBar extends StatelessWidget {
                     "Good $greeting!",
                     style: GoogleFonts.plusJakartaSans(fontSize: 12),
                   ),
-                  Text(
-                    "Stevennius",
-                    style: GoogleFonts.plusJakartaSans(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
+                  Obx(
+                    () => Text(
+                      "${c.name}",
+                      style: GoogleFonts.plusJakartaSans(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],
@@ -58,7 +64,7 @@ class MyAppBar extends StatelessWidget {
             child: IconButton(
               icon: Icon(Icons.notifications_outlined),
               onPressed: () {
-                FirebaseAuth.instance.signOut();
+                authService.value.signOut();
               },
             ),
           ),

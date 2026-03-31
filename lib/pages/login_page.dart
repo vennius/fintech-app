@@ -1,8 +1,9 @@
-import 'package:fintech_app/pages/register_page.dart';
+import 'package:fintech_app/services/auth_service.dart';
 import 'package:fintech_app/widgets/auth/auth_field_widget.dart';
 import 'package:fintech_app/widgets/auth/auth_login_button_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
@@ -13,17 +14,16 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController _controllerEmail = TextEditingController(
+    text: "stevenniuschandra@gmail.com",
+  );
+  final TextEditingController _controllerPassword = TextEditingController(
+    text: "Sc733148780",
+  );
   bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _controllerEmail = TextEditingController(
-      text: "stevenniuschandra@gmail.com",
-    );
-    final TextEditingController _controllerPassword = TextEditingController(
-      text: "Sc733148780",
-    );
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -31,6 +31,7 @@ class _LoginPageState extends State<LoginPage> {
           style: GoogleFonts.plusJakartaSans(fontSize: 25, fontWeight: .bold),
         ),
         centerTitle: true,
+        forceMaterialTransparency: true,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -58,18 +59,7 @@ class _LoginPageState extends State<LoginPage> {
             AuthButton(
               isLogin: true,
               isLoading: _isLoading,
-              onTap: () async {
-                setState(() {
-                  _isLoading = true;
-                });
-                await FirebaseAuth.instance.signInWithEmailAndPassword(
-                  email: _controllerEmail.value.text,
-                  password: _controllerPassword.value.text,
-                );
-                setState(() {
-                  _isLoading = false;
-                });
-              },
+              onTap: onLoginPress,
             ),
             Row(
               mainAxisAlignment: .center,
@@ -81,13 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return RegisterPage();
-                        },
-                      ),
-                    );
+                    Get.toNamed("/register");
                   },
                   child: Text(
                     "Sign Up",
@@ -103,5 +87,27 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  void onLoginPress() async {
+    try {
+      setState(() {
+        _isLoading = true;
+      });
+      await authService.value.firebaseAuth.signInWithEmailAndPassword(
+        email: _controllerEmail.value.text,
+        password: _controllerPassword.value.text,
+      );
+      setState(() {
+        _isLoading = false;
+      });
+    } on FirebaseAuthException catch (err) {
+      print("Login Error:");
+      print(err.message);
+      print("=====================");
+      setState(() {
+        _isLoading = false;
+      });
+    }
   }
 }
